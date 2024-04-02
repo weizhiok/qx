@@ -3,7 +3,7 @@
 *******************************
 %¥
 [rewrite_local]
-^https?:\/\/*\.edrawsoft\.com\/api\/user\/*.*? url script-response-body minded.js
+^https?:\/\/*\.edrawsoft\.com\/api\/user\/*.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
 
 
 [mitm]
