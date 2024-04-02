@@ -8,7 +8,7 @@
 
 
 [mitm]
-hostname = userapi.edrawsoft.com
+hostname = *.edrawsoft.com
 %¥
 *******************************/
 var body=$response.body;
