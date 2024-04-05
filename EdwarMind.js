@@ -14,8 +14,8 @@ hostname = userapi.edrawsoft.com
 %¥
 *******************************/
 var body=$response.body;
-body = body.replace(/1970-01-01/g,'2099-01-01');
-body = body.replace(/"fuser\":false/g,'"fuser":true');
-body = body.replace(/"license\":false/g,'"license":true');
-body = body.replace(/1900-01-01/g,'2099-01-01');
+body = body.replace(/\d\d\d\d-\d\d-\d\d/g,'2099-01-01');
+body = body.replace(/"fuser\":\w\w\w\w\w/g,'"fuser":true');
+body = body.replace(/"license\":\w\w\w\w\w/g,'"license":true');
+body = body.replace(/\d\d\d\d-\d\d-\d\d/g,'2099-01-01');
 $done(body);
