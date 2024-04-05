@@ -1,10 +1,9 @@
 /******************************
 ⚠️如果放远程，请把minded.js替换成运程链接⚠️
-
 *******************************
 %¥
 [rewrite_local]
-^https?:\/\/user\.hundun\.cn\*.*?|https?:\/\/course\.hundun\.cn\*.*? url script-response-body hundun.js
+^https?:\/\/user\.hundun\.cn\*.*?|https?:\/\/course\.hundun\.cn\*.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/hundun.js
 
 
 [mitm]
