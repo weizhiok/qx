@@ -1,4 +1,8 @@
 /******************************
+⚠️如果放远程，请把hundun.js替换成运程链接⚠️
+🫧建议配合working copy一起食用
+✈️working copy下载地址https://apps.apple.com/app/id896694807✈️
+*******************************
 %¥
 [rewrite_local]
 ^https?:\/\/user\.hundun\.cn\*.*?|https?:\/\/course\.hundun\.cn\*.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/hundun.js
