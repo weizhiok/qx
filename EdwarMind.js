@@ -6,7 +6,7 @@
 *******************************
 %¥
 [rewrite_local]
-^https?:\/\/user\.edrawsoft\.com\/.*? | ^https?:\/\/userapi\.edrawsoft\.com\/.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
+^https?:\/\/user\.edrawsoft\.com\/.*?|^https?:\/\/userapi\.edrawsoft\.com\/.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
 
 
 [mitm]
