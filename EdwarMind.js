@@ -1,7 +1,7 @@
 /
 %¥
 [rewrite_local]
-^https?:\/\/userapi\.edrawsoft\.com.+ url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
+^https?:\/\/userapi\.edrawsoft\.com\/api\/user\/*.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
 
 
 
