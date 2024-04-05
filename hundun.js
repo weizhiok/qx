@@ -6,7 +6,7 @@
 *******************************
 %¥
 [rewrite_local]
-^https?:\/\/user\.hundun\.cn\.*? | https?:\/\/course\.hundun\.cn\.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/hundun.js
+^https?:\/\/user\.hundun\.cn\.*?|https?:\/\/course\.hundun\.cn\.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/hundun.js
 
 [mitm]
 hostname = user.hundun.cn,course.hundun.cn
