@@ -1,7 +1,7 @@
 /******************************
 ⚠️如果放远程，请把EdrawMind.js替换成运程链接⚠️
 🫧脚本名称:【EdrawMind】
-🫧建议配合working copy一起食用
+🫧建议配合 working copy 一起食用
 ✈️working copy下载地址https://apps.apple.com/app/id896694807✈️
 *******************************
 %¥
