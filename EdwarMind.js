@@ -1,9 +1,4 @@
 /******************************
-⚠️如果放远程，请把EdrawMind.js替换成运程链接⚠️
-🫧脚本名称:【EdrawMind】
-🫧建议配合 working copy 一起食用
-✈️working copy下载地址https://apps.apple.com/app/id896694807✈️
-*******************************
 %¥
 [rewrite_local]
 ^https?:\/\/user\.edrawsoft\.com\/.*?|^https?:\/\/userapi\.edrawsoft\.com\/.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
