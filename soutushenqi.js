@@ -11,4 +11,5 @@ hostname = wallpaper.soutushenqi.com
 *******************************/
 var body=$response.body;
 body = body.replace(/vipType\": 0/g,'vipType": 1024');
+body = body.replace(/\"普通用户\"/g,'"VIP"');
 $done(body);
