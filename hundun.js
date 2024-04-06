@@ -6,7 +6,7 @@
 *******************************
 %¥
 [rewrite_local]
-^https?:\/\/course\.hundun\.cn\/.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/hundun.js
+^https?:\/\/course\.hundun\.cn\/.*?|^https?:\/\/user\.hundun\.cn\/.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/hundun.js
 
 
 [mitm]
