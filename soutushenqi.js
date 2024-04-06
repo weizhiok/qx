@@ -2,7 +2,7 @@
 /******************************
 %¥
 [rewrite_local]
-^http?:\/\/wallpaper\.soutushenqi\.com\/api\/v?\/account\/token.*? url script-response-body xxx.js
+^http?:\/\/wallpaper\.soutushenqi\.com\/api\/v?\/account\/token.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/soutushenqi.js
 
 
 [mitm]
