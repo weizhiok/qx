@@ -1,7 +1,7 @@
 /******************************
 %¥
 [rewrite_local]
-^https?:\/\/userapi\.edrawsoft.*\/mindmaster\?.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
+^https?:\/\/userapi\.edrawsoft.*\/api\/user\/\d+\/subscription\/mindmaster\?.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
 
 
 [mitm]
