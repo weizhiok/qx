@@ -1,11 +1,11 @@
 /******************************
 %¥
 [rewrite_local]
-^https?:\/\/user\.edrawsoft\.com\/.*?|^https?:\/\/userapi\.edrawsoft\.com\/.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
+^https?:\/\/userapi\.edrawsoft.*\/mindmaster.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdwarMind.js
 
 
 [mitm]
-hostname = user.edrawsoft.com,userapi.edrawsoft.com
+hostname = userapi.edrawsoft.com,userapi.edrawsoft.cn
 %¥
 *******************************/
 var body=$response.body;
