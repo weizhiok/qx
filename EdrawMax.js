@@ -2,7 +2,8 @@
 %¥
 [rewrite_local]
 ^https?:\/\/userapi\.edrawsoft.*\/api\/user\/\d+\/subscription\/max\?.*? url script-response-body https://raw.githubusercontent.com/weizhiok/qx/main/EdrawMax.js
-
+# 关闭试用横幅
+^https?:\/\/userapi\.edrawsoft.*\/api\/member\/\d+\/sales\/plan\?.*? url reject-200
 
 [mitm]
 hostname = userapi.edrawsoft.com,userapi.edrawsoft.cn
