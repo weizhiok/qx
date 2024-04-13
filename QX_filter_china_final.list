@@ -1,1 +1,3 @@
-
+geoip, cn, direct
+host-keyword, .cn, direct
+host-suffix, cn, direct
