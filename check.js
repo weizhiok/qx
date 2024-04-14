@@ -1,4 +1,4 @@
-const url = `https://github.com/weizhiok/qx/blob/main/QX_filter_china_final.list`;
+const url = `https://raw.githubusercontent.com/weizhiok/qx/main/checkok.txt`;
 const method = `GET`;
 const headers = {
 'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1`,
