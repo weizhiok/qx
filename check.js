@@ -1,9 +1,3 @@
-
-/**
- * @fileoverview Template to compose HTTP reqeuest.
- * 
- */
-
 const url = `https://github.com/weizhiok/qx/blob/main/QX_filter_china_final.list`;
 const method = `GET`;
 const headers = {
