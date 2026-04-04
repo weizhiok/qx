@@ -1,0 +1,7 @@
+# 以下为【强制直连】，同时兼容Quantumult X和Clash Verge Rev
+DOMAIN-SUFFIX,003.io
+DOMAIN-SUFFIX,weizhi.icu
+DOMAIN-KEYWORD,iCloud
+DOMAIN-KEYWORD,OneDrive
+IP-CIDR,154.198.42.227/32,no-resolve
+IP-CIDR,81.71.30.20/32,no-resolve
