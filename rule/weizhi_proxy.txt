@@ -1,4 +1,4 @@
 # 以下为【强制代理】，同时兼容Quantumult X和Clash Verge Rev
-DOMAIN-SUFFIX,google.com
-DOMAIN-KEYWORD,google
+DOMAIN-SUFFIX,nytimes.com
+DOMAIN-KEYWORD,nytimes
 IP-CIDR,142.251.37.14/32,no-resolve
