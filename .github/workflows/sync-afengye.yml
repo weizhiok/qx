@@ -3,9 +3,9 @@ name: Sync afengye QX
 on:
   workflow_dispatch:
   schedule:
-    # Check daily at 18:17 UTC (03:17 JST), but actually sync only on alternating UTC days.
-    # This produces a true 48-hour cadence across month/year boundaries.
-    - cron: '17 18 * * *'
+    # 05:40 Asia/Taipei = 21:40 UTC on the previous calendar day.
+    # Trigger daily, then the cadence gate below allows only every other Taipei day.
+    - cron: '40 21 * * *'
 
 permissions:
   contents: write
@@ -14,23 +14,26 @@ jobs:
   sync-afengye:
     runs-on: ubuntu-latest
     steps:
-      - name: Enforce 48-hour cadence
+      - name: Enforce 48-hour Taipei cadence
         id: cadence
         shell: bash
         run: |
           set -euo pipefail
 
+          # Manual runs always sync immediately.
           if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          utc_day=$(( $(date -u +%s) / 86400 ))
-          if (( utc_day % 2 == 0 )); then
+          # Convert the current UTC epoch into a Taiwan-local day number (UTC+8).
+          # The chosen parity is anchored so 2026-08-08 Taipei time is a sync day.
+          taipei_day=$(( ($(date -u +%s) + 28800) / 86400 ))
+          if (( taipei_day % 2 == 1 )); then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping today; next scheduled sync window is in 24 hours."
+            echo "Skipping today; next scheduled Taipei sync window is in 24 hours."
           fi
 
       - name: Checkout target repository
