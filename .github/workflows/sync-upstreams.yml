@@ -47,20 +47,24 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf /tmp/sync_afengye sync_afengye
+          rm -rf /tmp/sync_afengye
           git clone --depth=1 https://github.com/afengye/QX.git /tmp/sync_afengye
           mkdir -p sync_afengye
-          rsync -a --delete --exclude='.git/' /tmp/sync_afengye/ sync_afengye/
+          # Add new files and overwrite changed files, but never delete files
+          # from our repository just because they disappeared upstream.
+          rsync -a --exclude='.git/' /tmp/sync_afengye/ sync_afengye/
 
       - name: Sync WeiGiegie/666
         if: steps.cadence.outputs.run == 'true'
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf /tmp/sync_weigiegie sync_weigiegie
+          rm -rf /tmp/sync_weigiegie
           git clone --depth=1 https://github.com/WeiGiegie/666.git /tmp/sync_weigiegie
           mkdir -p sync_weigiegie
-          rsync -a --delete --exclude='.git/' /tmp/sync_weigiegie/ sync_weigiegie/
+          # Add new files and overwrite changed files, but never delete files
+          # from our repository just because they disappeared upstream.
+          rsync -a --exclude='.git/' /tmp/sync_weigiegie/ sync_weigiegie/
 
       - name: Commit synced content
         if: steps.cadence.outputs.run == 'true'
