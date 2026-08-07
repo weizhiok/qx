@@ -1,0 +1,74 @@
+name: Sync WeiGiegie 666
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Check daily at 18:27 UTC (03:27 JST), but actually sync only on alternating UTC days.
+    # Offset by 10 minutes from afengye to avoid competing pushes to main.
+    - cron: '27 18 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-weigiegie:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce 48-hour cadence
+        id: cadence
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          utc_day=$(( $(date -u +%s) / 86400 ))
+          if (( utc_day % 2 == 0 )); then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping today; next scheduled sync window is in 24 hours."
+          fi
+
+      - name: Checkout target repository
+        if: steps.cadence.outputs.run == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Clone WeiGiegie/666
+        if: steps.cadence.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/sync_weigiegie
+          git clone --depth=1 https://github.com/WeiGiegie/666.git /tmp/sync_weigiegie
+
+      - name: Copy new and changed files only
+        if: steps.cadence.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p sync_weigiegie
+          # Never use --delete and never clear the destination directory.
+          # Existing files that disappear upstream remain preserved here.
+          rsync -a --exclude='.git/' /tmp/sync_weigiegie/ sync_weigiegie/
+
+      - name: Commit WeiGiegie changes
+        if: steps.cadence.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A sync_weigiegie
+          if git diff --cached --quiet; then
+            echo "No WeiGiegie upstream changes to commit."
+            exit 0
+          fi
+          git commit -m "sync: update WeiGiegie/666"
+          git pull --rebase origin main
+          git push origin main
