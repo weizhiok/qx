@@ -1,0 +1,53 @@
+name: Sync upstream repositories
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/sync-upstreams.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync afengye/QX
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/sync_afengye sync_afengye
+          git clone --depth=1 https://github.com/afengye/QX.git /tmp/sync_afengye
+          mkdir -p sync_afengye
+          rsync -a --delete --exclude='.git/' /tmp/sync_afengye/ sync_afengye/
+
+      - name: Sync WeiGiegie/666
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/sync_weigiegie sync_weigiegie
+          git clone --depth=1 https://github.com/WeiGiegie/666.git /tmp/sync_weigiegie
+          mkdir -p sync_weigiegie
+          rsync -a --delete --exclude='.git/' /tmp/sync_weigiegie/ sync_weigiegie/
+
+      - name: Commit synced content
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A sync_afengye sync_weigiegie
+          if git diff --cached --quiet; then
+            echo "No upstream changes to commit."
+            exit 0
+          fi
+          git commit -m "sync: update upstream repositories"
+          git push
