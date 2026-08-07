@@ -1,0 +1,24 @@
+{
+  "errorCode": 0,
+  "msg": "登录成功",
+  "data": {
+    "token": "jhgRBYVz3YcNzHpy5tEZSFLSJcqdXyey_1784480076",
+    "user": {
+      "id": 165670,
+      "nickname": "",
+      "mobile": "",
+      "email": "oimjpt4@milertz.com",
+      "gender": "男",
+      "location": "",
+      "birthday": null,
+      "birth_sign": "",
+      "avatar": "",
+      "code": "Yj6JfH",
+      "total_money": "0.00",
+      "expire_at": "2026-07-20 00:54:35",
+      "is_vip": false
+    }
+  },
+  "upload_time": "2026-07-19T16:54:37.656Z",
+  "email": "oimjpt4@milertz.com"
+}
